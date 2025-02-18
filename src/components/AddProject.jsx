@@ -1,10 +1,12 @@
 import Input from "./Input";
 
-function AddProject(){
+function AddProject({onClick}){
+
+
     return <>
         <div>
             <menu>
-                <li><button>Cancel</button></li>
+                <li><button onClick={onClick}>Cancel</button></li>
                 <li><button>Save</button></li>
             </menu>
             

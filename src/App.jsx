@@ -6,16 +6,23 @@ import { useState } from "react";
 function App() {
   const [isAddButtonClicked, setIsAddButtonClicked] = useState(false);
   const [isDefaultPage, setIsDefaultPage] = useState(true);
+
+  
+  function handleCancelButtonClick(){
+    setIsAddButtonClicked(false);
+    setIsDefaultPage(true);
+  }
+
   function handleAddButtonClick(){
-    setIsAddButtonClicked(prevState => !prevState)
-    setIsDefaultPage(prev => !prev)
-}
+    setIsAddButtonClicked(true);
+    setIsDefaultPage(false);
+  } 
 
   return (
     <>
       <main className="h-screen my-8">
         <ProjectSideBar onClick={handleAddButtonClick}/>
-        {isAddButtonClicked && <AddProject />}
+        {isAddButtonClicked && <AddProject onClick={handleCancelButtonClick}/>}
         {isDefaultPage && <DefaultPage onClick={handleAddButtonClick}/>}
       </main>
     </>
