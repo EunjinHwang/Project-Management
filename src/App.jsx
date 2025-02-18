@@ -1,7 +1,23 @@
+import DefaultPage from "./components/DefaultPage";
+import ProjectSideBar from "./components/ProjectSideBar";
+import AddProject from "./components/AddProject";
+
+import { useState } from "react";
 function App() {
+  const [isAddButtonClicked, setIsAddButtonClicked] = useState(false);
+  const [isDefaultPage, setIsDefaultPage] = useState(true);
+  function handleAddButtonClick(){
+    setIsAddButtonClicked(prevState => !prevState)
+    setIsDefaultPage(prev => !prev)
+}
+
   return (
     <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
+      <main className="h-screen my-8">
+        <ProjectSideBar onClick={handleAddButtonClick}/>
+        {isAddButtonClicked && <AddProject />}
+        {isDefaultPage && <DefaultPage onClick={handleAddButtonClick}/>}
+      </main>
     </>
   );
 }
